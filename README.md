@@ -1,11 +1,16 @@
 ## Prerequistics
-Install all dependent libraries using below command 
+Goto Project Directory
+
+Install all dependencies using below command 
 
 pip install -r requirements.txt
 
-## Data Ingestion Process
+# STEP 1:
+## Data Ingestion Process 
 
-we have data_ingestion.py file, that will be responsible for creating the database file "ufos.db"
+GOTO Project directory
+
+we have data_ingestion.py file, that will be responsible for creating the database file data/"ufo_sightings.db"
 It will create table "sightings" with following structure
 
 CREATE TABLE IF NOT EXISTS sightings (
@@ -27,20 +32,26 @@ If data is already present then it will ingest only new records for the current 
 
 Command: python data_ingestion.py
 
-Result: A file named "ufo_sightings.db" will be created
+Result: A file named "ufo_sightings.db" will be created inside data directory
 
 We can setup this file to be executed daily using cron setup. 
 0 1 * * * /usr/bin/python3 data_ingestion.py # this will execute this file at 1 am every day
 
 Note: data_ingestion.py should be given correct absolute path.
 
-## Flask Application
+# Flask Application
 
+Now, time to execute Flask application
 
 goto directory flask_app
 Command: python app.py
 
-Test the API:
+## Flask API Documents
+Once Flask application is started at 127.0.0.1:5000
+
+Goto http://127.0.0.1:5000/swagger/ to view the Documentation of all the supported API's
+
+## Test the API:
 You can test the API using tools like Postman or cURL. Here are some examples:
 
 Get all sightings:

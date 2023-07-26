@@ -1,0 +1,120 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "title": "all_sightings",
+      "description": "A API Documents that demonstrates how to use Flask-App",
+      "version": "1.0"
+    },
+    "basePath": "/api",
+    "schemes": [
+      "http"
+    ],
+    "consumes": [
+      "application/json"
+    ],
+    "produces": [
+      "application/json"
+    ],
+    "paths": {
+      "/sightings": {
+        "get": {
+          "summary": "Returns all sightings data.",
+          "produces": [
+            "application/json"
+          ],
+          "responses": {
+            "200": {
+              "description": "Successful response.",
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "message": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/sightings/location/{location}": {
+        "get": {
+            "parameters": [
+                {
+                  "name": "location",
+                  "in": "path",
+                  "description": "location is either city name or state name",
+                  "required": true,
+                  "type": "string"
+                  
+                }
+              ],
+          "summary": "Returns all sightings data by locations",
+          "produces": [
+            "application/json"
+          ],
+          "responses": {
+            "200": {
+              "description": "Successful response.",
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "message": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/sightings/date/{day}/{month}/{year}": {
+        "get": {
+            "parameters": [
+                {
+                  "name": "day",
+                  "in": "path",
+                  "description": "day of the date for which data need to be extracted",
+                  "required": true,
+                  "type": "integer"
+                  
+                },
+                {
+                    "name": "month",
+                    "in": "path",
+                    "description": "month of the date for which data need to be extracted",
+                    "required": true,
+                    "type": "integer"
+                    
+                  },
+                  {
+                    "name": "year",
+                    "in": "path",
+                    "description": "year of the date for which data need to be extracted",
+                    "required": true,
+                    "type": "integer"
+                    
+                  }
+
+              ],
+          "summary": "Returns all sightings data by date",
+          "produces": [
+            "application/json"
+          ],
+          "responses": {
+            "200": {
+              "description": "Successful response.",
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "message": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }

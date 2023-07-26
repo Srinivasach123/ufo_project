@@ -4,8 +4,19 @@ import sqlite3
 from bs4 import BeautifulSoup
 from datetime import datetime, timedelta
 
-DB_PATH  = 'ufo_sightings.db'
+DB_PATH  = 'data/ufo_sightings.db'
 
+def create_directory():
+    directory_name = DB_PATH.split("/")[0]
+
+    # Use try-except to handle the case when the directory already exists
+    try:
+        os.mkdir(directory_name)
+        print(f"Directory '{directory_name}' created successfully.")
+    except FileExistsError:
+        print(f"Directory '{directory_name}' already exists.")
+    except Exception as e:
+        print(f"Error occurred: {str(e)}")
 
 def check_file_exists(file_path):
     if os.path.exists(file_path):
@@ -114,6 +125,7 @@ if __name__ == '__main__':
     # Fetch UFO sightings data from the National UFO Reporting Center
     months = []
     if check_file_exists:
+        create_directory()
         months = get_last_six_months()
         print("Inserting last six months of data")
     else:
